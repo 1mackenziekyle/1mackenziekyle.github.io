@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+Check out my projects and blog.
