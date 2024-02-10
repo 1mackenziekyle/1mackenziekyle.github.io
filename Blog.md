@@ -10,6 +10,13 @@ permalink: /blog/
 
 First fitness goal of 2024 achieved: Sub-25-minute 5KM run. 
 
+Also didn't write these earlier but here are my running-related goals for 2024: 
+
+1. Sub-25min 5K 
+2. Sub-50min 10K
+3. Sub 2hr half-marathon (21.1k)
+4. Sub 4hr marathon (42.2k)
+
 <br>
 <br>
 
@@ -125,17 +132,7 @@ e8 07 40 00 00 00 00 00 // 0x4007e8, addr of pwn3
 70 68 33 33 72 6d 33 6e // ph33rm3n00bz, value to put in x1, placed near value of $sp when reaching pwn3 
 30 30 62 7a 00 00 00 00 
 ``` 
-The above input was used to overwrite 3 link registers, overwrite 2 registers, and jump to a special function in the code.
-
-
-<br>
-<br>
-
-# Fitness Goals for 2024
-
-1. Sub-25min 5K 
-2. Sub-50min 10K
-3. Sub 2hr half-marathon (21.1k)
-4. Sub 4hr marathon (42.2k)
-
-<text style="color : gray">January 4, 2024</text>
+The above input was used to overwrite 3 link registers, overwrite 2 registers, and jump 3 different points in the code: 
+1. Load the register x1 with a pointer that points to a space in memory that holds a string argument (at the end of the user-inputted data above). Since this will go into `x1`, this will be the second argument passed into any the function according to ARM64 assembly's call convention.
+2. Load a value into `x0`. I had to find a [gadget](https://en.wikipedia.org/wiki/Return-oriented_programming) that wrote a value at a stack offset into `x0`, and then place the value on the stack in that special spot, all without modifying `x1` in the process, as that stored our string argument. 
+3. Jump to a gadget that saves a text file with the contents of the first two variables. In a real hacking situation, the end goal would be to open a terminal to gain full access to the device, which may involve a `syscall` call. This was a harmless exercise, so it just saves a text file and we are satisfied.
