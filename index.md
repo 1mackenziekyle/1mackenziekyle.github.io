@@ -5,4 +5,4 @@
 layout: home
 ---
 
-Check out my projects and blog!
+I make stuff! Check out my [blog](./blog) and [projects](./projects)!

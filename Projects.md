@@ -4,4 +4,4 @@ title: Projects
 permalink: /projects/
 ---
 
-Projects here.
+WIP!

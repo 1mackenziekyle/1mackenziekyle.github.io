@@ -4,10 +4,18 @@ title: Blog
 permalink: /blog/
 ---
 
+# First Running Milestone Achieved
+ 
+<text style="color : gray">February 8, 2024</text>
+
+First fitness goal of 2024 achieved: Sub-25-minute 5KM run. 
+
+<br>
+<br>
 
 # Hacking the stack using code injection and ROP 
 
-<text style="color : gray">February 9, 2024</text>
+<text style="color : gray">February 2, 2024</text>
 
 Using C's `gets()` function can have serious cybersecurity risks.
 
@@ -118,3 +126,16 @@ e8 07 40 00 00 00 00 00 // 0x4007e8, addr of pwn3
 30 30 62 7a 00 00 00 00 
 ``` 
 The above input was used to overwrite 3 link registers, overwrite 2 registers, and jump to a special function in the code.
+
+
+<br>
+<br>
+
+# Fitness Goals for 2024
+
+1. Sub-25min 5K 
+2. Sub-50min 10K
+3. Sub 2hr half-marathon (21.1k)
+4. Sub 4hr marathon (42.2k)
+
+<text style="color : gray">January 4, 2024</text>
