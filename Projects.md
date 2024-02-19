@@ -4,6 +4,8 @@ title: Projects
 permalink: /projects/
 ---
 
+## Work in progress! 
+
 # Torque Vectoring Drive Algorithm in C 
 
 <text style="color : gray">Ongoing, team project</text>
