@@ -32,7 +32,7 @@ This module takes in the steering wheel angle as input, and calculates an optima
 
 From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests $T_{L,R}$ 
 
-3. Traction Control 
+#### 3. Traction Control 
 
 This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
 
