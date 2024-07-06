@@ -41,4 +41,8 @@ Initially, it seems that zero slipping is the optimal amount for maximum torque 
 
 ## Robot Summer Project
 
-![Robot Prototyping Video](images/robot2.mp4)
+<iframe width="420" height="315" src="images/robot2.mp4" frameborder="0" allowfullscreen></iframe>
+
+## Cover Letter Generator
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/SVqlR_FcmrA" frameborder="0" allowfullscreen></iframe>
