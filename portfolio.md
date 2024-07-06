@@ -4,9 +4,8 @@ title: Projects
 permalink: /projects/
 ---
 
-## Work in progress! 
 
-# Torque Vectoring Drive Algorithm in C 
+## UBC Formula Electric: Torque Vectoring Drive Algorithm in C 
 
 <text style="color : gray">Ongoing, team project</text>
 
@@ -37,3 +36,5 @@ From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests
 This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
 
 Initially, it seems that zero slipping is the optimal amount for maximum torque transfer, but we found that 5% was the ideal value for this. Interesting. 
+
+## Capstone: Reaction-Wheel Inverted Pendulum

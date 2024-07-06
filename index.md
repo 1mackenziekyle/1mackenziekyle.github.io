@@ -5,4 +5,4 @@
 layout: home
 ---
 
-I make stuff! Check out my [blog](./blog) and [projects](./projects)!
+Hi, I'm an Engineering Physics student at the University of British Columbia. I am passionate about vehicle controls and embedded systems. Check out my [portfolio](./portfolio.md)!
