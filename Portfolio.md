@@ -41,8 +41,12 @@ Initially, it seems that zero slipping is the optimal amount for maximum torque 
 
 ## Robot Summer Project
 
-<iframe width="420" height="315" src="images/robot2.mp4" frameborder="0" allowfullscreen></iframe>
+<iframe width="840" height="470" src="https://www.youtube.com/embed/xE1HmceWWKg" frameborder="0" allowfullscreen></iframe>
+
+*Two DC brushless motors hooked up to an Arduino Nano through an H-Bridge PCB, controlled using two independant PWM pins and a hand-tuned PID controller based on the location of the tape relative to the center of the front of the robot.*
+
+![Robot2.jpg](images/robot2.jpg)
 
 ## Cover Letter Generator
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/SVqlR_FcmrA" frameborder="0" allowfullscreen></iframe>
+<iframe width="840" height="470" src="https://www.youtube.com/embed/SVqlR_FcmrA" frameborder="0" allowfullscreen></iframe>
