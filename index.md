@@ -5,6 +5,6 @@
 layout: home
 ---
 
-![Headshot](images/headshot.jpg){:height="50%" :width="50%"}
+![Headshot](media/headshot.jpg){:height="20%" :width="20%"}
 
 Hi, I'm an Engineering Physics student at the University of British Columbia. I am passionate about vehicle controls and embedded systems. Check out my [portfolio](./portfolio/)!
