@@ -11,7 +11,11 @@ permalink: /portfolio/
 
 ![picture 1](media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png)  
 
-This was a team project in which we developed a drive control algorithm that optimized our lap speeds. It had three main modules: 
+The goal of this project was to completely revamp the team's driving algorithm and to improve the car's performance 
+in driving events at the FSAE Formula Electric competition. We went into this project looking to utilize the most recent research being done on
+electric motor vehicles, and apply our knowledge of control theory to create an algorithm that utilized all the available power the vehicle could deliver in the most efficient way possible for all the different driving events. 
+
+The project was split into three main modules: 
 
 1. Power limiting 
 2. Software active differential 
@@ -19,7 +23,7 @@ This was a team project in which we developed a drive control algorithm that opt
 
 ####  1. Power Limiting Module
 
-The goal of this module was to calculate the absolute most available power to the car at any given point, while taking in safety considerations including the motor temps, battery state of charge, and of course user input. 
+The goal of this module was to calculate the absolute most available power to the car at any given point, while taking in safety considerations including the temperature limits of our motors and inverters, the state of charge of our battery pack, and of course the driver's inputs, e.g. steering wheel angle and accelerator/brake pedal positions. 
 
 #### 2. Software Active Differential 
 
@@ -36,6 +40,12 @@ From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests
 This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
 
 Initially, it seems that zero slipping is the optimal amount for maximum torque transfer, but we found that 5% was the ideal value for this. Interesting. 
+
+## Personal Project: Split Keyboard with fully custom firmware and hardware
+
+I am actively working on developing my own personal split keyboard. This project will include designing the electrical schematics and PCB for the keyboards, as well as configuring the STM32 chip and writing the code to go on it to work as a fully functional keyboard.
+
+![kiboard.png](media/kiboard.png)
 
 ## Capstone: Reaction-Wheel Inverted Pendulum
 
