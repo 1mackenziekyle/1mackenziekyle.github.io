@@ -7,7 +7,7 @@ permalink: /portfolio/
 
 ## UBC Formula Electric: Torque Vectoring Drive Algorithm in C 
 
-<text style="color : gray">Ongoing, team project</text>
+*Sept. 2023 - Present*
 
 ![picture 1](media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png)  
 
@@ -41,17 +41,27 @@ This module's job is to detect when we are slipping and reallocate torques to ma
 
 Initially, it seems that zero slipping is the optimal amount for maximum torque transfer, but we found that 5% was the ideal value for this. Interesting. 
 
+---
+
 ## Personal Project: Split Keyboard with fully custom firmware and hardware
+
+*July 2024 - Present*
 
 I am actively working on developing my own personal split keyboard. This project will include designing the electrical schematics and PCB for the keyboards, as well as configuring the STM32 chip and writing the code to go on it to work as a fully functional keyboard.
 
 ![kiboard.png](media/kiboard.png)
 
+---
+
 ## Capstone: Reaction-Wheel Inverted Pendulum
 
 <iframe width="384" height="683" src="https://www.youtube.com/embed/-fc4S1K2-TI" title="Reaction Wheel Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+---
+
 ## Robot Summer Project
+
+*Summer 2022*
 
 <iframe width="1001" height="563" src="https://www.youtube.com/embed/xE1HmceWWKg" title="Robot Summer 2022 Line-Following Prototyping" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -59,6 +69,10 @@ I am actively working on developing my own personal split keyboard. This project
 
 ![Robot2.jpg](media/robot2.jpg)
 
+---
+
 ## Cover Letter Generator
+
+*March 2022*
 
 <iframe width="1001" height="563" src="https://www.youtube.com/embed/SVqlR_FcmrA" title="Cover Letters Project Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
