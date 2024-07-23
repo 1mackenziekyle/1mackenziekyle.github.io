@@ -49,7 +49,11 @@ Initially, it seems that zero slipping is the optimal amount for maximum torque 
 
 I am actively working on developing my own personal split keyboard. This project will include designing the electrical schematics and PCB for the keyboards, as well as configuring the STM32 chip and writing the code to go on it to work as a fully functional keyboard.
 
+Here is a system-level diagram ...
+
 ![kiboard.png](media/kiboard.png)
+
+<object data="./media/sch.pdf" width="800" height="500" type='application/pdf'></object>
 
 ---
 
