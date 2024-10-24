@@ -1,7 +1,7 @@
 
 ---
 layout: page
-title: From-Scratch Wheeled Robot 
+title: Robot 
 permalink: /from-scratch-wheeled-robot/
 ---
 

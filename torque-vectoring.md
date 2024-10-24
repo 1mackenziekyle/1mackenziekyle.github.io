@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Torque Vectoring Algorithm - UBC FSAE 
+title: FSAE
 permalink: /torque-vectoring/
 ---
 
