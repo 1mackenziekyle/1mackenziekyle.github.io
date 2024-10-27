@@ -11,4 +11,11 @@ This prototype is a part of a team Capstone project, in which we are surveying d
 
 One of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.
 
-<iframe width="384" height="683" src="https://www.youtube.com/embed/-fc4S1K2-TI" title="Reaction Wheel Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+I personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original: 
+
+- reduced number of parts, easing assembly
+- reduced number of fasteners required
+- impact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.
+
+![chassis](media/unicycle-chassis.png)
+
