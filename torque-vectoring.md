@@ -46,14 +46,3 @@ From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests
 
 This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
 
-
-## Personal Project: Split Keyboard with fully custom firmware and hardware
-*August 2024 - Present*
-
-I am actively working on developing my own personal split keyboard. This project will include designing the electrical schematics and PCB for the keyboards, as well as configuring the STM32 chip and writing the code to go on it to work as a fully functional keyboard.
-
-Here is a system-level diagram ...
-
-![kiboard.png](media/kiboard.png)
-
-<object data="./media/sch.pdf" width="800" height="500" type='application/pdf'></object>
