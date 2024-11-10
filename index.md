@@ -5,8 +5,12 @@
 layout: home
 ---
 
+&nbsp;
+
 <p align="center">
-  <img width="15%" height="15%" src="media/marathon.png">
+  <img width="30%" height="30%" src="media/marathon.png">
 </p>
+
+&nbsp;
 
 Hi, I'm an Engineering Physics student at UBC. I'm passionate about vehicle controls and embedded systems. I also love running and playing the guitar. Check out my projects! 
