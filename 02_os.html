@@ -166,9 +166,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="syscalls---file-management" class="level4">
 <h4 class="anchored" data-anchor-id="syscalls---file-management">Syscalls - File Management</h4>
 <p>I implemented the syscalls that linux uses to modify files: <code>open()</code>, <code>close()</code>, <code>read()</code>, <code>write()</code>, and <code>lseek()</code>. These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.</p>
-<p><img src="media/filetable.png" class="img-fluid" alt="picture 1"><br>
+<p><img src="media/filetable.png" class="img-fluid"><br>
 <em>Standard Unix file table</em></p>
-<p><img src="media/fs.png" class="img-fluid" alt="filesystem"> <em>Our version of the Unix file table, using extra data structures to support dup() features elegantly</em></p>
+<p><img src="media/fs.png" class="img-fluid"> <em>Our version of the Unix file table, using extra data structures to support dup() features elegantly</em></p>
 </section>
 <section id="syscalls---process-creation" class="level4">
 <h4 class="anchored" data-anchor-id="syscalls---process-creation">Syscalls - process creation</h4>
@@ -180,12 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="execv-replace-the-current-running-program-with-a-new-one." class="level6">
 <h6 class="anchored" data-anchor-id="execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</h6>
 <p>It required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="media/execv2.png" class="img-fluid figure-img"></p>
-<figcaption>execv image</figcaption>
-</figure>
-</div>
+<p><img src="media/execv2.png" class="img-fluid"></p>
 <p><em>Image: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings</em></p>
 
 
