@@ -9,6 +9,10 @@ title: "Kyle Mackenzie's Personal Site"
 
 ![](media/headshot.jpg)
 
+<p align="center">
+ [Github](https://github.com/1mackenziekyle/) | [LinkedIn](https://github.com/1mackenziekyle/)
+</p>
+
 :::
 
 ::: {.column width="10%"}
