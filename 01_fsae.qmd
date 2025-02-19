@@ -5,12 +5,15 @@ permalink: /torque-vectoring/
 ---
 
 # UBC Formula Electric - Quad-motor torque vectoring algorithm 
-*Sept. 2024 - Present* 
+*Sept. 2024 - Dec. 2025* 
 
-Researching vehicle modelling and controls algorithms for slip control, yaw rate controllers, and power efficiency modules.
+This project aimed to overhaul the team’s driving algorithm, enhancing the car’s performance in driving events at the FSAE Formula Electric competition. The goal was to integrate cutting-edge research on electric motor vehicles and apply control theory to optimize power delivery for maximum efficiency across various driving scenarios.
 
-One of the main challenges of this project is getting accurate sensor data, which requires data fusion approaches from multiple sensors. We are currently looking into implementing a complimentary filter using an IMU and GPS, and moving onto an Extended Kalman Filter if the complementary filter does not give satisfactory results. 
+The project was divided into three key modules:
 
+1.    Power Limiting
+2.    Software Active Differential
+3.    Traction Control
 
 # UBC Formula Electric: Torque Vectoring Drive Algorithm 
 *2023 - 2024* 
