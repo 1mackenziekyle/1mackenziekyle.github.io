@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kyle Mackenzie’s Personal Site",
+    "section": "",
+    "text": "Welcome\nI’m Kyle Mackenzie, a fifth-year Engineering Physics student at the University of British Columbia.\n\n\nAcademics\nI am currently working with Sasha Fedorova out of the Computer and Software Systems research group at UBC, on a memory pre-fetching algorithm using novel machine-learning techniques.\nMy course work includes a mix mix of multi-disciplinary engineering topics, with a focus on high-level mathematics and physics. I have supplemented my studies with a specialization in software and computer systems by choosing technical elective courses in computer engineering.\n\n\nProjects\nI have a mix of experience with projects including working on torque controls for UBC Formula Electric, developing the OS161 operating system, and my Capstone project. Check them out on the other tabs of this website!"
+  },
+  {
+    "objectID": "02_os.html",
+    "href": "02_os.html",
+    "title": "OS161",
+    "section": "",
+    "text": "OS161 Operating System\nSept. 2024 - Present\nI am taking the course CPEN 331 at UBC, an Operating Systems course, in which I am writing OS-level code to add to the educational OS/161 from Harvard’s CS161 course. So far, I have implemented synchronization primitive types for multi-threaded programming, and implemented the filetable system, which manages the synchronized access to files between processes.\n\nSynchronization\nI used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.\nThese synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.\n\n\nSyscalls - File Management\nI implemented the syscalls that linux uses to modify files: open(), close(), read(), write(), and lseek(). These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.\n\nStandard Unix file table\n Our version of the Unix file table, using extra data structures to support dup() features elegantly\n\n\nSyscalls - process creation\nI implemented the syscalls fork() and execv(), which are used to create new processes in the kernel.\n\nfork(): Spawn an identical copy of the current running process\nRequired the current process’ address space (the sections of memory that it, alone, has access to) to be copied to the new process in a way that left no duplicate pointers. The way we did this was by copying all of the contents of the parent process’ physical pages onto a set of newly allocated physical pages, and adjusting the address space’ pointers such that any translated virtual addresses in the new (child) process would point to these newly allocated copies\n\n\nexecv(): Replace the current running program with a new one.\nIt required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.\n\n\n\nexecv image\n\n\nImage: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings"
+  },
+  {
+    "objectID": "04_robot-summer.html",
+    "href": "04_robot-summer.html",
+    "title": "Robot",
+    "section": "",
+    "text": "Robot Summer Project - Summer 2022\n\n\nTwo DC brushless motors hooked up to an Arduino Nano through an H-Bridge PCB, controlled using two independant PWM pins and a hand-tuned PID controller based on the location of the tape relative to the center of the front of the robot."
+  },
+  {
+    "objectID": "01_fsae.html",
+    "href": "01_fsae.html",
+    "title": "FSAE",
+    "section": "",
+    "text": "UBC Formula Electric - Quad-motor torque vectoring algorithm\nSept. 2024 - Present\nResearching vehicle modelling and controls algorithms for slip control, yaw rate controllers, and power efficiency modules.\nOne of the main challenges of this project is getting accurate sensor data, which requires data fusion approaches from multiple sensors. We are currently looking into implementing a complimentary filter using an IMU and GPS, and moving onto an Extended Kalman Filter if the complementary filter does not give satisfactory results.\n\n\nUBC Formula Electric: Torque Vectoring Drive Algorithm\n2023 - 2024\n\n\n\npicture 1\n\n\nThe goal of this project was to completely revamp the team’s driving algorithm and to improve the car’s performance in driving events at the FSAE Formula Electric competition. We went into this project looking to utilize the most recent research being done on electric motor vehicles, and apply our knowledge of control theory to create an algorithm that utilized all the available power the vehicle could deliver in the most efficient way possible for all the different driving events.\nThe project was split into three main modules:\n\nPower limiting\nSoftware active differential\nTraction Control\n\n\n1. Power Limiting Module\nThe goal of this module was to calculate the absolute most available power to the car at any given point, while taking in safety considerations including the temperature limits of our motors and inverters, the state of charge of our battery pack, and of course the driver’s inputs, e.g. steering wheel angle and accelerator/brake pedal positions. The limiting factor for power limit is often the battery’s state of charge (SOC). We cannot use regenerative braking too much at high SOC, and we can’t pull too much power from the battery at low SOC, due to voltage sagging under high discharge currents.\n\n\n2. Software Active Differential\nThis module takes in the steering wheel angle as input, and modulates the left-to-right motor torques to improve the cornering behavior of the car. By applying different torques to each side, we can apply a net moment on the car, causing an angular acceleration in the yaw axis to help us steer around the corner. Additionally, we can take advantage of the traction benefits of the car rolling and causing an increased downforce on the outside wheels of the car.\n\n\n\npicture 2\n\n\n\n\n\npicture 3\n\n\nFrom Draou 2013, we substitute wheel speeds \\(\\omega_{L,R}\\) for torque requests \\(T_{L,R}\\)\n\n\n3. Traction Control\nThis module’s job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero."
+  },
+  {
+    "objectID": "03_learning-to-balance.html",
+    "href": "03_learning-to-balance.html",
+    "title": "Learning to Balance",
+    "section": "",
+    "text": "Jan. 2024 - Present\nThis prototype is a part of a team Capstone project, in which we are surveying different controls strategies for robots with unstable dynamics. We are mainly comparing the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.\n\n\nContrary to much research in machine learning, we - nonlinear effects - gyroscopic procession - 3-axis control of wheeled robot - opportunity for physics-informed machine learning\nOne of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.\nI personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original:\n\nreduced number of parts, easing assembly\nreduced number of fasteners required\nimpact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.\n\n\n\n\nchassis"
+  },
+  {
+    "objectID": "03_learning-to-balance.html#what-makes-this-problem-interesting",
+    "href": "03_learning-to-balance.html#what-makes-this-problem-interesting",
+    "title": "Learning to Balance",
+    "section": "",
+    "text": "Contrary to much research in machine learning, we - nonlinear effects - gyroscopic procession - 3-axis control of wheeled robot - opportunity for physics-informed machine learning\nOne of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.\nI personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original:\n\nreduced number of parts, easing assembly\nreduced number of fasteners required\nimpact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.\n\n\n\n\nchassis"
+  }
+]
