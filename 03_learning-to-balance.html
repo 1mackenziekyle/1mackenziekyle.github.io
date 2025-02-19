@@ -131,6 +131,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#capstone-reaction-wheel-inverted-pendulum" id="toc-capstone-reaction-wheel-inverted-pendulum" class="nav-link active" data-scroll-target="#capstone-reaction-wheel-inverted-pendulum">Capstone: Reaction-Wheel Inverted Pendulum</a>
   <ul class="collapse">
   <li><a href="#what-makes-this-problem-interesting" id="toc-what-makes-this-problem-interesting" class="nav-link" data-scroll-target="#what-makes-this-problem-interesting">What makes this problem interesting?</a></li>
+  <li><a href="#lqr-and-mpc-controller-development" id="toc-lqr-and-mpc-controller-development" class="nav-link" data-scroll-target="#lqr-and-mpc-controller-development">LQR and MPC controller development</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -172,6 +173,11 @@ ul.task-list li input[type="checkbox"] {
 <li>impact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.</li>
 </ul>
 <p><img src="media/unicycle-chassis.png" class="img-fluid"></p>
+</section>
+<section id="lqr-and-mpc-controller-development" class="level2">
+<h2 class="anchored" data-anchor-id="lqr-and-mpc-controller-development">LQR and MPC controller development</h2>
+<p>The gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function.</p>
+<p>In our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem that goes beyond classical control theory (at least, at the level we are taught in undergraduate engineering).</p>
 
 
 </section>
