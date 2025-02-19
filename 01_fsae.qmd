@@ -16,7 +16,7 @@ One of the main challenges of this project is getting accurate sensor data, whic
 *2023 - 2024* 
 
 
-![picture 1](media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png)  
+![](media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png)  
 
 The goal of this project was to completely revamp the team's driving algorithm and to improve the car's performance 
 in driving events at the FSAE Formula Electric competition. We went into this project looking to utilize the most recent research being done on
@@ -36,9 +36,9 @@ The goal of this module was to calculate the absolute most available power to th
 
 This module takes in the steering wheel angle as input, and modulates the left-to-right motor torques to improve the cornering behavior of the car. By applying different torques to each side, we can apply a net moment on the car, causing an angular acceleration in the yaw axis to help us steer around the corner. Additionally, we can take advantage of the traction benefits of the car rolling and causing an increased downforce on the outside wheels of the car.
 
-![picture 2](media/5c7c8663969ffe99bddc1840975ae27b93877c60bee5531a2cc3db1bc2c2a256.png)  
+![](media/5c7c8663969ffe99bddc1840975ae27b93877c60bee5531a2cc3db1bc2c2a256.png)  
 
-![picture 3](media/576b8e67f3ea7d8eb861f3be09261e5d90aed0cc396bea8e645b7927df15369c.png)  
+![](media/576b8e67f3ea7d8eb861f3be09261e5d90aed0cc396bea8e645b7927df15369c.png)  
 
 From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests $T_{L,R}$ 
 

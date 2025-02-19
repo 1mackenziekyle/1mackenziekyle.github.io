@@ -26,5 +26,5 @@ I personally worked on the CAD design of the robot. I created a CAD design that 
 - reduced number of fasteners required
 - impact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.
 
-![chassis](media/unicycle-chassis.png)
+![](media/unicycle-chassis.png)
 
