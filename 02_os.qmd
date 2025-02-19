@@ -21,10 +21,10 @@ These synchronization tools were then tested using unit tests that spawned hundr
 
 I implemented the syscalls that linux uses to modify files: `open()`, `close()`, `read()`, `write()`, and `lseek()`. These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.
 
-![](media/filetable.png)  
+![picture 1](media/filetable.png)  
 *Standard Unix file table*
 
-![](media/fs.png)
+![filesystem](media/fs.png)
 *Our version of the Unix file table, using extra data structures to support dup() features elegantly*
 
 #### Syscalls - process creation
@@ -41,7 +41,7 @@ It required a careful management of kernel memory, while being able to copy up t
 stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit
 in real-world kernel design. 
 
-![](media/execv2.png)
+![execv image](media/execv2.png)
 
 *Image: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings*
 
