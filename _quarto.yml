@@ -7,10 +7,11 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - 01_fsae.qmd
-      - 02_os.qmd
-      - 03_learning-to-balance.qmd
-      - 04_robot-summer.qmd
+      - fsae.qmd
+      - os.qmd
+      - learning-to-balance.qmd
+      - machine-learning.qmd
+      - robot-summer.qmd
       - about.qmd
 
 format:
