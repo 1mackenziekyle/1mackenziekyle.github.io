@@ -2,4 +2,17 @@
 title: "About"
 ---
 
-About this site
+Some of my interests outside of academics include playing the guitar, scuba diving, and 
+running. 
+
+I ran a marathon in October 2024, in the middle of the school semester. It was a huge challenge to train 
+during the school semester, but it ended up being immensely rewarding to finish the full marathon. I will be 
+running again to beat my time!
+
+<p align="center">
+<img align="center" src="media/marathon.png" width="50%">
+</p>
+
+<p align="center">
+*Me running in the 2024 Toronto Waterfront Marathon*
+</p>
