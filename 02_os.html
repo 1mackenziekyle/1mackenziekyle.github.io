@@ -128,7 +128,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#os161-operating-system" id="toc-os161-operating-system" class="nav-link active" data-scroll-target="#os161-operating-system">OS161 Operating System</a></li>
+  <li><a href="#os161-operating-system" id="toc-os161-operating-system" class="nav-link active" data-scroll-target="#os161-operating-system">OS161 Operating System</a>
+  <ul class="collapse">
+  <li><a href="#synchronization" id="toc-synchronization" class="nav-link" data-scroll-target="#synchronization">Synchronization</a></li>
+  <li><a href="#syscalls---file-management" id="toc-syscalls---file-management" class="nav-link" data-scroll-target="#syscalls---file-management">Syscalls - File Management</a></li>
+  <li><a href="#syscalls---process-creation" id="toc-syscalls---process-creation" class="nav-link" data-scroll-target="#syscalls---process-creation">Syscalls - process creation</a>
+  <ul class="collapse">
+  <li><a href="#fork-spawn-an-identical-copy-of-the-current-running-process" id="toc-fork-spawn-an-identical-copy-of-the-current-running-process" class="nav-link" data-scroll-target="#fork-spawn-an-identical-copy-of-the-current-running-process"><code>fork()</code>: Spawn an identical copy of the current running process</a></li>
+  <li><a href="#execv-replace-the-current-running-program-with-a-new-one." id="toc-execv-replace-the-current-running-program-with-a-new-one." class="nav-link" data-scroll-target="#execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</a></li>
+  </ul></li>
+  <li><a href="#virtual-memory-system" id="toc-virtual-memory-system" class="nav-link" data-scroll-target="#virtual-memory-system">Virtual memory system</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -158,33 +168,40 @@ ul.task-list li input[type="checkbox"] {
 <h1>OS161 Operating System</h1>
 <p><em>Sept.&nbsp;2024 - Present</em></p>
 <p>I am taking the course CPEN 331 at UBC, an Operating Systems course, in which I am writing OS-level code to add to the educational OS/161 from Harvard’s CS161 course. So far, I have implemented synchronization primitive types for multi-threaded programming, and implemented the filetable system, which manages the synchronized access to files between processes.</p>
-<section id="synchronization" class="level4">
-<h4 class="anchored" data-anchor-id="synchronization">Synchronization</h4>
+<section id="synchronization" class="level2">
+<h2 class="anchored" data-anchor-id="synchronization">Synchronization</h2>
 <p>I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.</p>
 <p>These synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.</p>
 </section>
-<section id="syscalls---file-management" class="level4">
-<h4 class="anchored" data-anchor-id="syscalls---file-management">Syscalls - File Management</h4>
+<section id="syscalls---file-management" class="level2">
+<h2 class="anchored" data-anchor-id="syscalls---file-management">Syscalls - File Management</h2>
 <p>I implemented the syscalls that linux uses to modify files: <code>open()</code>, <code>close()</code>, <code>read()</code>, <code>write()</code>, and <code>lseek()</code>. These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.</p>
 <p><img src="media/filetable.png" class="img-fluid"><br>
 <em>Standard Unix file table</em></p>
 <p><img src="media/fs.png" class="img-fluid"> <em>Our version of the Unix file table, using extra data structures to support dup() features elegantly</em></p>
 </section>
-<section id="syscalls---process-creation" class="level4">
-<h4 class="anchored" data-anchor-id="syscalls---process-creation">Syscalls - process creation</h4>
+<section id="syscalls---process-creation" class="level2">
+<h2 class="anchored" data-anchor-id="syscalls---process-creation">Syscalls - process creation</h2>
 <p>I implemented the syscalls <code>fork()</code> and <code>execv()</code>, which are used to create new processes in the kernel.</p>
-<section id="fork-spawn-an-identical-copy-of-the-current-running-process" class="level6">
-<h6 class="anchored" data-anchor-id="fork-spawn-an-identical-copy-of-the-current-running-process"><code>fork()</code>: Spawn an identical copy of the current running process</h6>
+<section id="fork-spawn-an-identical-copy-of-the-current-running-process" class="level3">
+<h3 class="anchored" data-anchor-id="fork-spawn-an-identical-copy-of-the-current-running-process"><code>fork()</code>: Spawn an identical copy of the current running process</h3>
 <p>Required the current process’ address space (the sections of memory that it, alone, has access to) to be copied to the new process in a way that left no duplicate pointers. The way we did this was by copying all of the contents of the parent process’ physical pages onto a set of newly allocated physical pages, and adjusting the address space’ pointers such that any translated virtual addresses in the new (child) process would point to these newly allocated copies</p>
 </section>
-<section id="execv-replace-the-current-running-program-with-a-new-one." class="level6">
-<h6 class="anchored" data-anchor-id="execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</h6>
+<section id="execv-replace-the-current-running-program-with-a-new-one." class="level3">
+<h3 class="anchored" data-anchor-id="execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</h3>
 <p>It required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.</p>
 <p><img src="media/execv2.png" class="img-fluid"></p>
 <p><em>Image: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings</em></p>
-
-
 </section>
+</section>
+<section id="virtual-memory-system" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-memory-system">Virtual memory system</h2>
+<div data-align="center">
+<p><img align="center" src="media/tlb.png" width="120%"></p>
+</div>
+<p>For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. I also added support for the sbrk() system call, enabling dynamic memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I enhanced the ability of OS161 to manage multiple processes efficiently, providing each with the illusion of an expansive virtual memory space, even with limited physical memory. This project required deep integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for ensuring system stability and performance.</p>
+
+
 </section>
 </section>
 
