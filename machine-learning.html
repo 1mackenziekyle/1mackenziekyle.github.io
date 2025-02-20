@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Kyle Mackenzie’s Personal Site – Kyle Mackenzie</title>
+<title>Machine Learning – Kyle Mackenzie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Learning to Balance</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./machine-learning.html"> 
+    <a class="nav-link active" href="./machine-learning.html" aria-current="page"> 
 <span class="menu-text">Machine Learning</span></a>
   </li>  
   <li class="nav-item">
@@ -127,15 +127,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#enph-353-project-self-driving-and-character-recognition" id="toc-enph-353-project-self-driving-and-character-recognition" class="nav-link active" data-scroll-target="#enph-353-project-self-driving-and-character-recognition">ENPH 353 Project: Self-driving and character recognition</a>
+  <ul class="collapse">
+  <li><a href="#custom-sail-method-data-collection-for-driving-model" id="toc-custom-sail-method-data-collection-for-driving-model" class="nav-link" data-scroll-target="#custom-sail-method-data-collection-for-driving-model">Custom SAIL method: Data collection for driving model</a></li>
+  <li><a href="#license-recognition-model-data-collection-data-pre-processing" id="toc-license-recognition-model-data-collection-data-pre-processing" class="nav-link" data-scroll-target="#license-recognition-model-data-collection-data-pre-processing">License-recognition model data collection: data pre-processing</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Kyle Mackenzie’s Personal Site</h1>
+<h1 class="title">Machine Learning</h1>
 </div>
 
 
@@ -152,32 +162,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img src="media/headshot.jpg" class="img-fluid"></p>
+<section id="enph-353-project-self-driving-and-character-recognition" class="level2">
+<h2 class="anchored" data-anchor-id="enph-353-project-self-driving-and-character-recognition">ENPH 353 Project: Self-driving and character recognition</h2>
+<p>This was a machine learning course that focused on an end-of-term competition, where teams of two developed machine learning models for self-driving and character recognition and competed in a simulated competition.</p>
+<!-- IMAGE HERE  -->
 <p align="center">
-<a href="https://github.com/1mackenziekyle/">Github</a> | <a href="https://www.linkedin.com/in/kyle-mackenzie-url/">LinkedIn</a>
+<img align="center" src="media/353-comp-env.png" width="80%">
 </p>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p>I’m Kyle Mackenzie, a fifth-year Engineering Physics student at the University of British Columbia.</p>
+<p align="center">
+<em>Competition environment. Bottom left is POV from car</em>
+</p>
+<p>A large challenge in this project was collecting data for the models. The driving model required creative ways to collect meaningful data, and the character recognition required a more traditional data augmentation approach.</p>
+<section id="custom-sail-method-data-collection-for-driving-model" class="level3">
+<h3 class="anchored" data-anchor-id="custom-sail-method-data-collection-for-driving-model">Custom SAIL method: Data collection for driving model</h3>
+<p>As the driving controller utilized imitation learning, the model required “expert trajectories”, which is essentially a labelled dataset that is comprised of a given model input to a given model output. In this case, the labelled data was a given POV of the car (visual input) and the output was the driving command that was issued at that time, which was assumed to be the optimal controller choice, something my driving instructor would disagree with.</p>
+<p>The key issue with collecting data is that when the model is nearly finished training with the dataset, and you need to collect a bit more data to ‘nudge’ the controller in the desired direction, there is already so much data that a few more does not make a large impact.</p>
+<p>This was inspiration for my own custom method: SAIL (Selective Aggregation for Imitation Learning). This is the contribution for which I am most proud to this project. There is an existing method called DAgger (for example, in <a href="https://arxiv.org/pdf/1905.01657">this paper</a> on drone control), in which humans add, or aggregate to a dataset based on observed performance, to adjust the behavior of a model.</p>
+<p>The main issue I found is that the new data is always littered with redundant data, or data that already agrees with the current behaviour. Thus by adding 50% redundant data and 50% new data, the effect of the new data is limited.</p>
+<p>The solution that I came up with for this is by taking each new datapoint, running it through the current controller, and only adding it to the dataset if the outputs disagree with each other. This way, we include new expert labelled data without diluting the dataset with redundant data that the model already knows.</p>
+<p>I am very proud of coming up with this method, as I have not seen it in the literature.</p>
+<p align="center">
+<img align="center" src="media/353-debugging.png" width="90%">
+</p>
+<p align="center">
+<em>Various debugging tools used while training the models, and the computer vision methods to pre-process, including binary masking on a certain RGB range, filtering, and polygon detection.The pre-processing was done in OpenCV and later fed into a custom CNN</em>
+</p>
 </section>
-<section id="academics" class="level1">
-<h1>Academics</h1>
-<p>I am currently working with <a href="https://ece.ubc.ca/alexandra-sasha-fedorova/">Sasha Fedorova</a> out of the Computer and Software Systems research group at UBC, on a memory pre-fetching algorithm using novel machine-learning techniques.</p>
-<p>My course work includes a mix mix of multi-disciplinary engineering topics, with a focus on high-level mathematics and physics. I have supplemented my studies with a specialization in software and computer systems by choosing technical elective courses in computer engineering.</p>
-</section>
-<section id="projects" class="level1">
-<h1>Projects</h1>
-<p>I have a mix of experience with projects including working on torque controls for <a href="./01_fsae.qmd">UBC Formula Electric</a>, developing the <a href="./02_os.qmd">OS161 operating system</a>, and my <a href="./03_learning-to-balance.qmd">Capstone project</a>. Check them out on the other tabs of this website!</p>
-</section>
-</div>
-</div>
+<section id="license-recognition-model-data-collection-data-pre-processing" class="level3">
+<h3 class="anchored" data-anchor-id="license-recognition-model-data-collection-data-pre-processing">License-recognition model data collection: data pre-processing</h3>
+<p>The data collection for the image recognition model was much simpler. By finding the font that matched the existing license plates in simulation, I was able to augment the data using OpenCV to both replicate the existing perspective warps and angles that may exist in the simulation, and at the same time make the model more robust by training it on characters that were further distorted than what it will be given in-sim.</p>
+<p>This work demonstrates key steps in image preprocessing, such as binary masking, data augmentation, and the creation of a labeled dataset, along with the use of CNNs for character recognition. I was extremely proud of this work and thoroughly enjoyed it from start to finish.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Kyle Mackenzie’s Personal Site – Kyle Mackenzie</title>
+<title>FSAE – Kyle Mackenzie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -89,11 +118,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./fsae.html"> 
+    <a class="nav-link active" href="./fsae.html" aria-current="page"> 
 <span class="menu-text">FSAE</span></a>
   </li>  
   <li class="nav-item">
@@ -127,15 +156,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ubc-formula-electric---quad-motor-torque-vectoring-algorithm" id="toc-ubc-formula-electric---quad-motor-torque-vectoring-algorithm" class="nav-link active" data-scroll-target="#ubc-formula-electric---quad-motor-torque-vectoring-algorithm">UBC Formula Electric - Quad-motor torque vectoring algorithm</a></li>
+  <li><a href="#ubc-formula-electric-torque-vectoring-drive-algorithm" id="toc-ubc-formula-electric-torque-vectoring-drive-algorithm" class="nav-link" data-scroll-target="#ubc-formula-electric-torque-vectoring-drive-algorithm">UBC Formula Electric: Torque Vectoring Drive Algorithm</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Kyle Mackenzie’s Personal Site</h1>
+<h1 class="title">FSAE</h1>
 </div>
 
 
@@ -152,32 +188,46 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img src="media/headshot.jpg" class="img-fluid"></p>
-<p align="center">
-<a href="https://github.com/1mackenziekyle/">Github</a> | <a href="https://www.linkedin.com/in/kyle-mackenzie-url/">LinkedIn</a>
-</p>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p>I’m Kyle Mackenzie, a fifth-year Engineering Physics student at the University of British Columbia.</p>
+<section id="ubc-formula-electric---quad-motor-torque-vectoring-algorithm" class="level1">
+<h1>UBC Formula Electric - Quad-motor torque vectoring algorithm</h1>
+<p><em>Sept.&nbsp;2024 - Dec.&nbsp;2025</em></p>
+<p>This project aimed to overhaul the team’s driving algorithm, enhancing the car’s performance in driving events at the FSAE Formula Electric competition. The goal was to integrate cutting-edge research on electric motor vehicles and apply control theory to optimize power delivery for maximum efficiency across various driving scenarios.</p>
+<p>The project was divided into three key modules:</p>
+<ol type="1">
+<li>Power Limiting</li>
+<li>Software Active Differential</li>
+<li>Traction Control</li>
+</ol>
 </section>
-<section id="academics" class="level1">
-<h1>Academics</h1>
-<p>I am currently working with <a href="https://ece.ubc.ca/alexandra-sasha-fedorova/">Sasha Fedorova</a> out of the Computer and Software Systems research group at UBC, on a memory pre-fetching algorithm using novel machine-learning techniques.</p>
-<p>My course work includes a mix mix of multi-disciplinary engineering topics, with a focus on high-level mathematics and physics. I have supplemented my studies with a specialization in software and computer systems by choosing technical elective courses in computer engineering.</p>
+<section id="ubc-formula-electric-torque-vectoring-drive-algorithm" class="level1">
+<h1>UBC Formula Electric: Torque Vectoring Drive Algorithm</h1>
+<p><em>2023 - 2024</em></p>
+<p><img src="media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png" class="img-fluid"></p>
+<p>The goal of this project was to completely revamp the team’s driving algorithm and to improve the car’s performance in driving events at the FSAE Formula Electric competition. We went into this project looking to utilize the most recent research being done on electric motor vehicles, and apply our knowledge of control theory to create an algorithm that utilized all the available power the vehicle could deliver in the most efficient way possible for all the different driving events.</p>
+<p>The project was split into three main modules:</p>
+<ol type="1">
+<li>Power limiting</li>
+<li>Software active differential</li>
+<li>Traction Control</li>
+</ol>
+<section id="power-limiting-module" class="level4">
+<h4 class="anchored" data-anchor-id="power-limiting-module">1. Power Limiting Module</h4>
+<p>The goal of this module was to calculate the absolute most available power to the car at any given point, while taking in safety considerations including the temperature limits of our motors and inverters, the state of charge of our battery pack, and of course the driver’s inputs, e.g.&nbsp;steering wheel angle and accelerator/brake pedal positions. The limiting factor for power limit is often the battery’s state of charge (SOC). We cannot use regenerative braking too much at high SOC, and we can’t pull too much power from the battery at low SOC, due to voltage sagging under high discharge currents.</p>
 </section>
-<section id="projects" class="level1">
-<h1>Projects</h1>
-<p>I have a mix of experience with projects including working on torque controls for <a href="./01_fsae.qmd">UBC Formula Electric</a>, developing the <a href="./02_os.qmd">OS161 operating system</a>, and my <a href="./03_learning-to-balance.qmd">Capstone project</a>. Check them out on the other tabs of this website!</p>
+<section id="software-active-differential" class="level4">
+<h4 class="anchored" data-anchor-id="software-active-differential">2. Software Active Differential</h4>
+<p>This module takes in the steering wheel angle as input, and modulates the left-to-right motor torques to improve the cornering behavior of the car. By applying different torques to each side, we can apply a net moment on the car, causing an angular acceleration in the yaw axis to help us steer around the corner. Additionally, we can take advantage of the traction benefits of the car rolling and causing an increased downforce on the outside wheels of the car.</p>
+<p><img src="media/5c7c8663969ffe99bddc1840975ae27b93877c60bee5531a2cc3db1bc2c2a256.png" class="img-fluid"></p>
+<p><img src="media/576b8e67f3ea7d8eb861f3be09261e5d90aed0cc396bea8e645b7927df15369c.png" class="img-fluid"></p>
+<p>From <em>Draou 2013</em>, we substitute wheel speeds <span class="math inline">\(\omega_{L,R}\)</span> for torque requests <span class="math inline">\(T_{L,R}\)</span></p>
 </section>
-</div>
-</div>
+<section id="traction-control" class="level4">
+<h4 class="anchored" data-anchor-id="traction-control">3. Traction Control</h4>
+<p>This module’s job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

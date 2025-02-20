@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Kyle Mackenzie’s Personal Site – Kyle Mackenzie</title>
+<title>Learning to Balance – Kyle Mackenzie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">OS161</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./learning-to-balance.html"> 
+    <a class="nav-link active" href="./learning-to-balance.html" aria-current="page"> 
 <span class="menu-text">Learning to Balance</span></a>
   </li>  
   <li class="nav-item">
@@ -127,15 +127,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#capstone-reaction-wheel-inverted-pendulum" id="toc-capstone-reaction-wheel-inverted-pendulum" class="nav-link active" data-scroll-target="#capstone-reaction-wheel-inverted-pendulum">Capstone: Reaction-Wheel Inverted Pendulum</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-this-problem-interesting" id="toc-what-makes-this-problem-interesting" class="nav-link" data-scroll-target="#what-makes-this-problem-interesting">What makes this problem interesting?</a></li>
+  <li><a href="#lqr-and-mpc-controller-development" id="toc-lqr-and-mpc-controller-development" class="nav-link" data-scroll-target="#lqr-and-mpc-controller-development">LQR and MPC controller development</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Kyle Mackenzie’s Personal Site</h1>
+<h1 class="title">Learning to Balance</h1>
 </div>
 
 
@@ -152,32 +162,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><img src="media/headshot.jpg" class="img-fluid"></p>
-<p align="center">
-<a href="https://github.com/1mackenziekyle/">Github</a> | <a href="https://www.linkedin.com/in/kyle-mackenzie-url/">LinkedIn</a>
-</p>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p>I’m Kyle Mackenzie, a fifth-year Engineering Physics student at the University of British Columbia.</p>
+<section id="capstone-reaction-wheel-inverted-pendulum" class="level1">
+<h1>Capstone: Reaction-Wheel Inverted Pendulum</h1>
+<p><em>Jan.&nbsp;2024 - Present</em></p>
+<p>This prototype is a part of a team Capstone project, in which we are surveying different controls strategies for robots with unstable dynamics. We are mainly comparing the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.</p>
+<section id="what-makes-this-problem-interesting" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-this-problem-interesting">What makes this problem interesting?</h2>
+<p>Contrary to much research in machine learning, we - nonlinear effects - gyroscopic procession - 3-axis control of wheeled robot - opportunity for physics-informed machine learning</p>
+<p>One of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.</p>
+<p>I personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original:</p>
+<ul>
+<li>reduced number of parts, easing assembly</li>
+<li>reduced number of fasteners required</li>
+<li>impact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.</li>
+</ul>
+<p><img src="media/unicycle-chassis.png" class="img-fluid"></p>
 </section>
-<section id="academics" class="level1">
-<h1>Academics</h1>
-<p>I am currently working with <a href="https://ece.ubc.ca/alexandra-sasha-fedorova/">Sasha Fedorova</a> out of the Computer and Software Systems research group at UBC, on a memory pre-fetching algorithm using novel machine-learning techniques.</p>
-<p>My course work includes a mix mix of multi-disciplinary engineering topics, with a focus on high-level mathematics and physics. I have supplemented my studies with a specialization in software and computer systems by choosing technical elective courses in computer engineering.</p>
-</section>
-<section id="projects" class="level1">
-<h1>Projects</h1>
-<p>I have a mix of experience with projects including working on torque controls for <a href="./01_fsae.qmd">UBC Formula Electric</a>, developing the <a href="./02_os.qmd">OS161 operating system</a>, and my <a href="./03_learning-to-balance.qmd">Capstone project</a>. Check them out on the other tabs of this website!</p>
-</section>
-</div>
-</div>
+<section id="lqr-and-mpc-controller-development" class="level2">
+<h2 class="anchored" data-anchor-id="lqr-and-mpc-controller-development">LQR and MPC controller development</h2>
+<p>The gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function.</p>
+<p>In our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem that goes beyond classical control theory (at least, at the level we are taught in undergraduate engineering).</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
