@@ -55,4 +55,11 @@ in the simulation, and at the same time make the model more robust
 by training it on characters that were further distorted than what 
 it will be given in-sim.
 
+<p align="center">
+<img align="center" src="media/char-recog.png" width="110%">
+</p>
+<p align="center">
+*Output of character recognition model on custom-made pre-processed data.*
+</p>
+
 This work demonstrates key steps in image preprocessing, such as binary masking, data augmentation, and the creation of a labeled dataset, along with the use of CNNs for character recognition. I was extremely proud of this work and thoroughly enjoyed it from start to finish.
