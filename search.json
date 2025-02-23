@@ -37,35 +37,35 @@
   {
     "objectID": "os.html",
     "href": "os.html",
-    "title": "OS161",
+    "title": "Operating Systems",
     "section": "",
     "text": "Sept. 2024 - Present\nI am taking the course CPEN 331 at UBC, an Operating Systems course, in which I am writing OS-level code to add to the educational OS/161 from Harvard’s CS161 course. So far, I have implemented synchronization primitive types for multi-threaded programming, and implemented the filetable system, which manages the synchronized access to files between processes.\n\n\nI used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.\nThese synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.\n\n\n\nI implemented the syscalls that linux uses to modify files: open(), close(), read(), write(), and lseek(). These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.\n\nStandard Unix file table\n Our version of the Unix file table, using extra data structures to support dup() features elegantly\n\n\n\nI implemented the syscalls fork() and execv(), which are used to create new processes in the kernel.\n\n\nRequired the current process’ address space (the sections of memory that it, alone, has access to) to be copied to the new process in a way that left no duplicate pointers. The way we did this was by copying all of the contents of the parent process’ physical pages onto a set of newly allocated physical pages, and adjusting the address space’ pointers such that any translated virtual addresses in the new (child) process would point to these newly allocated copies\n\n\n\nIt required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.\n\nImage: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings\n\n\n\n\n\n\n\nFor the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. I also added support for the sbrk() system call, enabling dynamic memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I enhanced the ability of OS161 to manage multiple processes efficiently, providing each with the illusion of an expansive virtual memory space, even with limited physical memory. This project required deep integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for ensuring system stability and performance."
   },
   {
     "objectID": "os.html#synchronization",
     "href": "os.html#synchronization",
-    "title": "OS161",
+    "title": "Operating Systems",
     "section": "",
     "text": "I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.\nThese synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely."
   },
   {
     "objectID": "os.html#syscalls---file-management",
     "href": "os.html#syscalls---file-management",
-    "title": "OS161",
+    "title": "Operating Systems",
     "section": "",
     "text": "I implemented the syscalls that linux uses to modify files: open(), close(), read(), write(), and lseek(). These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.\n\nStandard Unix file table\n Our version of the Unix file table, using extra data structures to support dup() features elegantly"
   },
   {
     "objectID": "os.html#syscalls---process-creation",
     "href": "os.html#syscalls---process-creation",
-    "title": "OS161",
+    "title": "Operating Systems",
     "section": "",
     "text": "I implemented the syscalls fork() and execv(), which are used to create new processes in the kernel.\n\n\nRequired the current process’ address space (the sections of memory that it, alone, has access to) to be copied to the new process in a way that left no duplicate pointers. The way we did this was by copying all of the contents of the parent process’ physical pages onto a set of newly allocated physical pages, and adjusting the address space’ pointers such that any translated virtual addresses in the new (child) process would point to these newly allocated copies\n\n\n\nIt required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.\n\nImage: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings"
   },
   {
     "objectID": "os.html#virtual-memory-system",
     "href": "os.html#virtual-memory-system",
-    "title": "OS161",
+    "title": "Operating Systems",
     "section": "",
     "text": "For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. I also added support for the sbrk() system call, enabling dynamic memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I enhanced the ability of OS161 to manage multiple processes efficiently, providing each with the illusion of an expansive virtual memory space, even with limited physical memory. This project required deep integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for ensuring system stability and performance."
   },
@@ -79,21 +79,21 @@
   {
     "objectID": "learning-to-balance.html",
     "href": "learning-to-balance.html",
-    "title": "Learning to Balance",
+    "title": "Self-Balancing Robot",
     "section": "",
     "text": "Jan. 2024 - Present\nThis prototype is a part of a team Capstone project, in which we are surveying different controls strategies for robots with unstable dynamics. We are mainly comparing the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.\n\n\nOne of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.\nI personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original:\n\nreduced number of parts, easing assembly\nreduced number of fasteners required\nimpact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.\n\n\n\n\n\nThe gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function.\nIn our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem that goes beyond classical control theory (at least, at the level we are taught in undergraduate engineering)."
   },
   {
     "objectID": "learning-to-balance.html#what-makes-this-problem-interesting",
     "href": "learning-to-balance.html#what-makes-this-problem-interesting",
-    "title": "Learning to Balance",
+    "title": "Self-Balancing Robot",
     "section": "",
     "text": "One of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.\nI personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original:\n\nreduced number of parts, easing assembly\nreduced number of fasteners required\nimpact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass."
   },
   {
     "objectID": "learning-to-balance.html#lqr-and-mpc-controller-development",
     "href": "learning-to-balance.html#lqr-and-mpc-controller-development",
-    "title": "Learning to Balance",
+    "title": "Self-Balancing Robot",
     "section": "",
     "text": "The gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function.\nIn our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem that goes beyond classical control theory (at least, at the level we are taught in undergraduate engineering)."
   }
