@@ -12,7 +12,7 @@ I took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level
 
 I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.
 
-The spinlock uses low-level atomic assembly instruction `tas`, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock implementation to allow more abstract use of synchronization.
+The spinlock uses low-level atomic assembly instruction `tas`, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock /inkmplementation to allow more abstract use of synchronization.
 
 These synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.
 
