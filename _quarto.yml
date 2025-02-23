@@ -11,7 +11,6 @@ website:
       - os.qmd
       - learning-to-balance.qmd
       - machine-learning.qmd
-      - robot-summer.qmd
       - about.qmd
 
 format:
