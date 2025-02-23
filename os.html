@@ -132,9 +132,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#os161-operating-system" id="toc-os161-operating-system" class="nav-link active" data-scroll-target="#os161-operating-system">OS161 Operating System</a>
-  <ul class="collapse">
-  <li><a href="#synchronization" id="toc-synchronization" class="nav-link" data-scroll-target="#synchronization">Synchronization</a></li>
+  <li><a href="#synchronization" id="toc-synchronization" class="nav-link active" data-scroll-target="#synchronization">Synchronization</a></li>
   <li><a href="#syscalls---file-management" id="toc-syscalls---file-management" class="nav-link" data-scroll-target="#syscalls---file-management">Syscalls - File Management</a></li>
   <li><a href="#syscalls---process-creation" id="toc-syscalls---process-creation" class="nav-link" data-scroll-target="#syscalls---process-creation">Syscalls - process creation</a>
   <ul class="collapse">
@@ -142,7 +140,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#execv-replace-the-current-running-program-with-a-new-one." id="toc-execv-replace-the-current-running-program-with-a-new-one." class="nav-link" data-scroll-target="#execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</a></li>
   </ul></li>
   <li><a href="#virtual-memory-system" id="toc-virtual-memory-system" class="nav-link" data-scroll-target="#virtual-memory-system">Virtual memory system</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -168,13 +165,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="os161-operating-system" class="level1">
-<h1>OS161 Operating System</h1>
 <p><em>Sept.&nbsp;2024 - Present</em></p>
-<p>I am taking the course CPEN 331 at UBC, an Operating Systems course, in which I am writing OS-level code to add to the educational OS/161 from Harvard’s CS161 course. So far, I have implemented synchronization primitive types for multi-threaded programming, and implemented the filetable system, which manages the synchronized access to files between processes.</p>
+<p>I took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level code to build the foundational components of an operating system, using the educational OS/161 from Harvard’s CS161 course. The main components were synchronization primitive types for multi-threaded programming, a custom-architected filetable system, which manages the synchronized access to files between processes, a custom process management architecture that allows calls of <code>fork()</code>, <code>execv()</code>, and <code>waitpid()</code>, allowing duplicated processes, new process creation, and child process management, and finally, a custom virtual memory system with RAM management, page eviction, and swap space.</p>
 <section id="synchronization" class="level2">
 <h2 class="anchored" data-anchor-id="synchronization">Synchronization</h2>
 <p>I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.</p>
+<p>The spinlock uses low-level atomic assembly instruction <code>tas</code>, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock implementation to allow more abstract use of synchronization.</p>
 <p>These synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.</p>
 </section>
 <section id="syscalls---file-management" class="level2">
@@ -203,10 +199,10 @@ ul.task-list li input[type="checkbox"] {
 <div data-align="center">
 <p><img align="center" src="media/tlb.png" width="120%"></p>
 </div>
-<p>For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. I also added support for the sbrk() system call, enabling dynamic memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I enhanced the ability of OS161 to manage multiple processes efficiently, providing each with the illusion of an expansive virtual memory space, even with limited physical memory. This project required deep integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for ensuring system stability and performance.</p>
+<p>For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time.</p>
+<p>I also added support for the <code>sbrk()</code> system call, enabling dynamic heap memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I allowed OS161 to manage multiple processes efficiently, and evict old processes’ memory, providing each with the virtualization of an expansive virtual memory space, even with limited physical (RAM) memory. This project required integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for debugging the system and ensuring proper operation.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
