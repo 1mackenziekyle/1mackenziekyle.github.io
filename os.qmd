@@ -4,14 +4,15 @@ title: Operating Systems
 permalink: /os161-kernel-development/
 ---
 
-# OS161 Operating System 
 *Sept. 2024 - Present* 
 
-I am taking the course CPEN 331 at UBC, an Operating Systems course, in which I am writing OS-level code to add to the educational OS/161 from Harvard's CS161 course. So far, I have implemented synchronization primitive types for multi-threaded programming, and implemented the filetable system, which manages the synchronized access to files between processes. 
+I took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level code to build the foundational components of an operating system, using the educational OS/161 from Harvard's CS161 course. The main components were synchronization primitive types for multi-threaded programming, a custom-architected filetable system, which manages the synchronized access to files between processes, a custom process management architecture that allows calls of `fork()`, `execv()`, and `waitpid()`, allowing duplicated processes, new process creation, and child process management, and finally, a custom virtual memory system with RAM management, page eviction, and swap space.
 
 ## Synchronization
 
 I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.
+
+The spinlock uses low-level atomic assembly instruction `tas`, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock implementation to allow more abstract use of synchronization.
 
 These synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.
 
@@ -51,4 +52,6 @@ in real-world kernel design.
 <img align="center" src="media/tlb.png" width="120%">
 </div>
 
-For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. I also added support for the sbrk() system call, enabling dynamic memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I enhanced the ability of OS161 to manage multiple processes efficiently, providing each with the illusion of an expansive virtual memory space, even with limited physical memory. This project required deep integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for ensuring system stability and performance.
+For the final assignment of this computer engineering course, I designed and implemented a virtual memory system for OS161 to replace the existing DUMBVM, which had no page-tracking and page eviction program. The project involved several key tasks, including servicing TLB faults, implementing paging to enable memory swapping between RAM and disk, and developing a page eviction algorithm, along with implementing swap-space to allow the virtualization of memory, letting the computer allocate more memory than exists in RAM at one time. 
+
+I also added support for the `sbrk()` system call, enabling dynamic heap memory allocation, and implemented functionality to properly handle memory management during process forking. Additionally, I incorporated a more robust TLB eviction strategy to prevent kernel crashes due to TLB overflow. By replacing DUMBVM with a more comprehensive system, I allowed OS161 to manage multiple processes efficiently, and evict old processes' memory, providing each with the virtualization of an expansive virtual memory space, even with limited physical (RAM) memory. This project required integration with the MIPS architecture, memory management units, and synchronization protocols, all of which were critical for debugging the system and ensuring proper operation.
