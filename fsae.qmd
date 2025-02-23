@@ -1,10 +1,10 @@
 ---
 layout: page
-title: FSAE
+title: UBC Formula Electric 
 permalink: /torque-vectoring/
 ---
 
-# UBC Formula Electric - Quad-motor torque vectoring algorithm 
+# Quad-motor torque vectoring algorithm 
 *Sept. 2024 - Dec. 2025* 
 
 This project aimed to overhaul the team’s driving algorithm, enhancing the car’s performance in driving events at the FSAE Formula Electric competition. The goal was to integrate cutting-edge research on electric motor vehicles and apply control theory to optimize power delivery for maximum efficiency across various driving scenarios.
@@ -15,7 +15,7 @@ The project was divided into three key modules:
 2.    Software Active Differential
 3.    Traction Control
 
-# UBC Formula Electric: Torque Vectoring Drive Algorithm 
+# Torque Vectoring Drive Algorithm 
 *2023 - 2024* 
 
 

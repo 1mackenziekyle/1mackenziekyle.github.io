@@ -35,7 +35,7 @@ software and computer systems by choosing technical elective courses in computer
 
 # Projects 
 
-I have a mix of experience with projects including working on torque controls for [UBC Formula Electric](./01_fsae.qmd), developing the [OS161 operating system](./02_os.qmd), and my [Capstone project](./03_learning-to-balance.qmd). Check them out on the other tabs of this website!
+I have a mix of experience with projects including working on torque controls for [UBC Formula Electric](./fsae.qmd), developing the [OS161 operating system](./os.qmd), and my [Capstone project](./learning-to-balance.qmd). Check them out on the other tabs of this website!
 
 :::
 

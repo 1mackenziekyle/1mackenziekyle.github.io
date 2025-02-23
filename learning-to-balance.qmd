@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Learning to Balance 
+title: Self-Balancing Robot
 permalink: /learning-to-balance/
 ---
 

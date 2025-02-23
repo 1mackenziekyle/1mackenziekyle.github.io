@@ -1,5 +1,7 @@
 ---
+layout: page
 title: Machine Learning
+permalink: /machine-learning/
 ---
 
 ## ENPH 353 Project: Self-driving and character recognition 

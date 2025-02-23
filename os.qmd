@@ -1,6 +1,6 @@
 ---
 layout: page
-title: OS161 
+title: Operating Systems 
 permalink: /os161-kernel-development/
 ---
 
