@@ -46,7 +46,7 @@
     "href": "os.html#synchronization",
     "title": "Operating Systems",
     "section": "Synchronization",
-    "text": "Synchronization\nI used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.\nThe spinlock uses low-level atomic assembly instruction tas, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock implementation to allow more abstract use of synchronization.\nThese synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely."
+    "text": "Synchronization\nI used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.\nThe spinlock uses low-level atomic assembly instruction tas, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock /inkmplementation to allow more abstract use of synchronization.\nThese synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely."
   },
   {
     "objectID": "os.html#syscalls---file-management",
