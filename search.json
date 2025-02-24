@@ -39,7 +39,7 @@
     "href": "os.html",
     "title": "Operating Systems",
     "section": "",
-    "text": "Sept. 2024 - Present\nI took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level code to build the foundational components of an operating system, using the educational OS/161 from Harvard’s CS161 course. The main components were synchronization primitive types for multi-threaded programming, a custom-architected filetable system, which manages the synchronized access to files between processes, a custom process management architecture that allows calls of fork(), execv(), and waitpid(), allowing duplicated processes, new process creation, and child process management, and finally, a custom virtual memory system with RAM management, page eviction, and swap space."
+    "text": "Sept. 2024 - Dec. 2024\nI took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level code to build the foundational components of an operating system, using the educational OS/161 from Harvard’s CS161 course. The main components were synchronization primitive types for multi-threaded programming, a custom-architected filetable system, which manages the synchronized access to files between processes, a custom process management architecture that allows calls of fork(), execv(), and waitpid(), allowing duplicated processes, new process creation, and child process management, and finally, a custom virtual memory system with RAM management, page eviction, and swap space."
   },
   {
     "objectID": "os.html#synchronization",
