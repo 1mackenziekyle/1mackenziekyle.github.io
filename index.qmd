@@ -17,7 +17,8 @@ I'm Kyle Mackenzie, a fifth-year Engineering Physics student at the University o
 </p>
 
 <p align="center">
- [Github](https://github.com/1mackenziekyle/) | [LinkedIn](https://www.linkedin.com/in/kdmackenzie/)
+ [Github](https://github.com/1mackenziekyle/) | [LinkedIn](https://www.linkedin.com/in/kdmackenzie/) | 
+ [Resume](./media/resume-kyle-mackenzie.pdf)
 </p>
 
 :::
