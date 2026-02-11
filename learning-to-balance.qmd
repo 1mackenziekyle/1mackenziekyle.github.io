@@ -19,10 +19,9 @@ I personally worked on the CAD design of the robot. I created a CAD design that 
 - reduced number of fasteners required
 - reduce loads taken by extruded 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.
  
+![](media/broomy-total.png)
  
 ![](media/unicycle-chassis.png)
-
-![](media/broomy-total.png)
 
 ## LQR and MPC controller development
 
