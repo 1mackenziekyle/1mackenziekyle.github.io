@@ -132,7 +132,6 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#what-makes-this-problem-interesting" id="toc-what-makes-this-problem-interesting" class="nav-link" data-scroll-target="#what-makes-this-problem-interesting">What makes this problem interesting?</a></li>
   <li><a href="#lqr-and-mpc-controller-development" id="toc-lqr-and-mpc-controller-development" class="nav-link" data-scroll-target="#lqr-and-mpc-controller-development">LQR and MPC controller development</a></li>
-  <li><a href="#machine-learning-development" id="toc-machine-learning-development" class="nav-link" data-scroll-target="#machine-learning-development">Machine learning development</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -161,8 +160,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="capstone-reaction-wheel-inverted-pendulum" class="level1">
 <h1>Capstone: Reaction-Wheel Inverted Pendulum</h1>
-<p><em>Jan.&nbsp;2024 - Present</em></p>
-<p>This prototype is a part of a team Capstone project, in which we are surveying different controls strategies for robots with unstable dynamics. We are mainly comparing the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.</p>
+<p><em>Jan.&nbsp;2024 - April 2025</em></p>
+<p>This prototype was a part of a team Capstone project, in which we were surveying different controls strategies for robots with unstable dynamics. We compared the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.</p>
 <section id="what-makes-this-problem-interesting" class="level2">
 <h2 class="anchored" data-anchor-id="what-makes-this-problem-interesting">What makes this problem interesting?</h2>
 <p>One of the main challenges of this project is characterizing the dynamics of our robot. The video depicts a prototype, but our main robot has a motor in each of the three axes. This brings about highly complex dynamics equations due to phenomona such as gyroscopic procession, and the conservation of angular momentum.</p>
@@ -179,9 +178,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="lqr-and-mpc-controller-development">LQR and MPC controller development</h2>
 <p>The gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function.</p>
 <p>In our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem to solve non-naively, and goes beyond the classical control theory we take in our undergraduate studies.</p>
-</section>
-<section id="machine-learning-development" class="level2">
-<h2 class="anchored" data-anchor-id="machine-learning-development">Machine learning development</h2>
 
 
 </section>
