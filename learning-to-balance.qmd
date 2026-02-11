@@ -15,14 +15,20 @@ One of the main challenges of this project is characterizing the dynamics of our
 
 I personally worked on the CAD design of the robot. I created a CAD design that could be 3D printed that had the following benefits from the original: 
 
-- reduced number of parts, easing assembly
+- reduced number of parts, easing rapid assembly and prototyping, allowing for faster iteration of the design and testing of the robot, which is crucial for a project like this where we are trying to test different control strategies and need to be able to quickly iterate on the design.
 - reduced number of fasteners required
-- impact loads taken by 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.
-
+- reduce loads taken by extruded 3D printed parts, allowing for smaller, lighter fasteners to be used, reducing total mass.
+ 
+ 
 ![](media/unicycle-chassis.png)
+
+![](media/broomy-total.png)
 
 ## LQR and MPC controller development
 
 The gains for the LQR controller are calculated using an optimization algorithm, which takes a sort of cost function as its input. Therefore, the controller is only good as your cost function is, as for any given cost function, the LQR optimization will create an optimal controller to minimize the given function. 
 
-In our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem that goes beyond classical control theory (at least, at the level we are taught in undergraduate engineering).
+In our case, our cost function mostly uses the angles of the robot, measured from upright, so that the optimized controller tries to minimize the angle of the robot, keeping it balanced. Additionally, the physics of electric motors create some challenges: All electric motors have a maximum speed, at which torque cannot be further applied in the direction of rotation. Therefore, we need to penalize high motor speeds to make sure the controller never gets itself to a point where it can no longer apply a torque, otherwise it may be unable to self-right. This is a tricky problem to solve non-naively, and goes beyond the classical control theory we take in our undergraduate studies.
+
+## Machine learning development 
+
