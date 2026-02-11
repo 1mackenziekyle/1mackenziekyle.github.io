@@ -7,9 +7,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - fsae.qmd
       - os.qmd
       - learning-to-balance.qmd
+      - fsae.qmd
       - machine-learning.qmd
       - about.qmd
 
