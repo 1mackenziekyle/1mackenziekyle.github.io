@@ -7,6 +7,15 @@ permalink: /learning-to-balance/
 # Capstone: Reaction-Wheel Inverted Pendulum
 *Jan. 2024 - April 2025* 
 
+We won the Eric Roenitz Memorial Award, granted to a Capstone project that demonstrates a high level of ingenuity in design and execution.
+
+<p align="center" >
+  <img width="50%" src="media/capstone-award.jpg" />
+</p>
+
+
+## Year 2: Integrating all Six Axes of Motion
+
 This prototype was a part of a team Capstone project, in which we were surveying different controls strategies for robots with unstable dynamics. We compared the performance of traditional controls methods including using PID controllers, using a Linear-Quadratic Regulator, and using a Model-Predictive Controller, with the performance of neural-network-based controllers, mainly using Reinforcement Learning.
 
 ## What makes this problem interesting? 
