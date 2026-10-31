@@ -6,15 +6,15 @@ permalink: /os161-kernel-development/
 
 *Sept. 2024 - Dec. 2024* 
 
-I took the CPEN 331 (Operating Systems) course at UBC, in which I wrote OS-level code to build the foundational components of an operating system, using the educational OS/161 from Harvard's CS161 course. The main components were synchronization primitive types for multi-threaded programming, a custom-architected filetable system, which manages the synchronized access to files between processes, a custom process management architecture that allows calls of `fork()`, `execv()`, and `waitpid()`, allowing duplicated processes, new process creation, and child process management, and finally, a custom virtual memory system with RAM management, page eviction, and swap space.
+I took CPEN 331, the Operating Systems course at UBC, in which I built the foundational components of an operating system using the educational OS/161 from Harvard's CS161 course. The main components I developed were 'synchronization primitive' types for multi-threaded programming, a custom-designed 'filetable' system, which manages multi-threaded access to a shared file system between processes, a custom process management architecture that implements the `fork()`, `execv()`, and `waitpid()` system calls, among others, allowing duplicated processes, new process creation, and child process management, Finally, I developed a custom virtual memory system which manages RAM, disk memory, and swap space.
 
 ## Synchronization
 
-I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including higher-level locks, semaphores, and condition variables.
+I used synchronization primitives (namely spinlocks) to implement higher-level primitives to aid in writing concurrent multi-threaded code for a multi-core machine, including locks, semaphores, and condition variables.
 
-The spinlock uses low-level atomic assembly instruction `tas`, test-and-set, which allows no interleaving of instructions in other processes. Then, the higher-level primitives like locks and semaphores are built upon the spinlock /inkmplementation to allow more abstract use of synchronization.
+The spinlock uses the atomic assembly instruction `tas`, test-and-set, which allows no interleaving of instructions from other processes. Then, the higher-level primitives including locks and semaphores are built upon the spinlock implementation to create a level of abstraction of synchronization above the assembly code, which further supports the synchronized implementation of the higher-level operating system components.
 
-These synchronization tools were then tested using unit tests that spawned hundreds of threads, and manipulated shared data safely.
+These synchronization tools were then validated to work with hundreds of threads, which manipulated shared data safely.
 
 ## Syscalls - File Management
 
