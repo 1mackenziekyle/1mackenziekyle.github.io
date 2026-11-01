@@ -6,7 +6,7 @@ permalink: /os161-kernel-development/
 
 *Sept. 2024 - Dec. 2024* 
 
-I took CPEN 331, the Operating Systems course at UBC, in which I built the foundational components of an operating system using the educational OS/161 from Harvard's CS161 course. The main components I developed were 'synchronization primitive' types for multi-threaded programming, a custom-designed 'filetable' system, which manages multi-threaded access to a shared file system between processes, a custom process management architecture that implements the `fork()`, `execv()`, and `waitpid()` system calls, among others, allowing duplicated processes, new process creation, and child process management, Finally, I developed a custom virtual memory system which manages RAM, disk memory, and swap space.
+I took CPEN 331, the Operating Systems course at UBC, in which I built the foundational components of an operating system using the educational OS/161 from Harvard's CS161 course. The main components I developed were 'synchronization primitive' types for multi-threaded programming, a custom-designed 'filetable' system, which manages multi-threaded access to a shared file system between processes, a custom process management architecture that implements the `fork()`, `execv()`, and `waitpid()` system calls, among others, allowing duplicated processes, new process creation, and child process management. Finally, I developed a custom virtual memory system which manages RAM, disk memory, and swap space.
 
 ## Synchronization
 
@@ -18,9 +18,7 @@ These synchronization tools were then validated to work with hundreds of threads
 
 ## Syscalls - File Management
 
-
-
-I implemented the syscalls that linux uses to modify files: `open()`, `close()`, `read()`, `write()`, and `lseek()`. These syscalls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.
+I implemented the system calls that linux uses to modify files: `open()`, `close()`, `read()`, `write()`, and `lseek()`. These system calls required the implementation of a system-wide data structure that tracks open and closed files, and manages the shared access to them between processes. We followed the standard Unix file system structure with a few small modifications.
 
 ![](media/filetable.png)  
 *Standard Unix file table*
@@ -30,7 +28,7 @@ I implemented the syscalls that linux uses to modify files: `open()`, `close()`,
 
 ## Syscalls - process creation
 
-I implemented the syscalls `fork()` and `execv()`, which are used to create new processes in the kernel. 
+I implemented the system calls `fork()` and `execv()`, which are used to create new processes in the kernel. 
 
 ### `fork()`: Spawn an identical copy of the current running process
 
