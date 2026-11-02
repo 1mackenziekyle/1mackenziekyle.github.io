@@ -13,8 +13,6 @@ I am a person with many interests. During my time in Vancouver for university, I
 <p align="center">
 Some friends and I in our gear after getting our PADI Advanced Open Water diving certification.
 </p>
-<br>
-
 <p align="center">
 <img align="center" src="media/wetsuit.jpg" width="50%">
 </p>
