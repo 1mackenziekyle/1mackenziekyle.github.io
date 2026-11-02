@@ -25,7 +25,7 @@ Me in my wetsuit post-scuba diving in the Komodo Islands in Indonesia!
 <img align="center" src="media/scuba-gang.jpg" width="50%">
 </p>
 <p align="center">
-Me and friends with our diving instructor from Indonesia!
+Me and friends with our diving instructor in Indonesia!
 </p>
 <br>
 
@@ -43,7 +43,7 @@ After this experience, I decided I would take training more seriously and come b
 <img align="center" src="media/bmo.jpg" width="50%">
 </p>
 <p align="center">
-In May 2026, a year and a half after my first marathon, I ran the Vancouver BMO Marathon with a time of 4:57:36, achieving my goal time.
+In May 2026, a year and a half after my first marathon, I ran the Vancouver BMO Marathon with a time of 3:57:36, achieving my goal time.
 <p align="center">
 </p>
 <br>
@@ -59,7 +59,7 @@ Me climbing a slippery slab in Squamish, BC.
 </p>
 <br>
 
-I had the privilege of travelling to Southeast Asia with one of my best friends after graduating university.
+After graduating university, I had the privilege of traveling to Southeast Asia with one of my best friends.
 
 <p align="center">
 <img align="center" src="media/duongtuong.jpg" width="50%">
