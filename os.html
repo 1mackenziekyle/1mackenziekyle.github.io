@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="execv-replace-the-current-running-program-with-a-new-one." class="level3">
 <h3 class="anchored" data-anchor-id="execv-replace-the-current-running-program-with-a-new-one."><code>execv()</code>: Replace the current running program with a new one.</h3>
-<p>It required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.</p>
+<p>It required careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit in real-world kernel design.</p>
 <p><img src="media/execv2.png" class="img-fluid"></p>
 <p><em>Image: Midway through copying arguments from old address space, to new address space, using the kernel stack as a buffer for chunks of strings</em></p>
 </section>
