@@ -36,7 +36,7 @@ Required the current process' address space (the sections of memory that it, alo
 
 ### `execv()`: Replace the current running program with a new one.
 
-It required a careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user 
+It required careful management of kernel memory, while being able to copy up to 64KB of memory from the old address space to the new. We decided on a chunking strategy, where we allocate space on the new user 
 stack, and copy a single kilobyte of memory over at a time. This strategy allows the kernel to stay lean, and reduce the amount of pages required by the kernel on a standard machine, which is a large benefit
 in real-world kernel design. 
 
