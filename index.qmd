@@ -13,7 +13,7 @@ I'm Kyle Mackenzie, a recent graduate with a Bachelor's of Applied Science degre
 
 
 <p align="center">
-<img align="center" src="media/headshot.jpg" width="100%">
+<img align="center" src="media/selfie.png" width="100%">
 </p>
 
 <p align="center">
