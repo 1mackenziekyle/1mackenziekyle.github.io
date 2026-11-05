@@ -4,19 +4,7 @@ title: UBC Formula Electric
 permalink: /torque-vectoring/
 ---
 
-# Quad-motor torque vectoring algorithm 
-*Sept. 2024 - Dec. 2025* 
-
-This project aimed to overhaul the team’s driving algorithm, enhancing the car’s performance in driving events at the FSAE Formula Electric competition. The goal was to integrate cutting-edge research on electric motor vehicles and apply control theory to optimize power delivery for maximum efficiency across various driving scenarios.
-
-The project was divided into three key modules:
-
-1.    Power Limiting
-2.    Software Active Differential
-3.    Traction Control
-
 # Torque Vectoring Drive Algorithm 
-*2023 - 2024* 
 
 
 ![](media/c22f49f8fb6b99d68cafc8f31db64a142c95411c8fe8ccecd3ccf0c5e1ef9d88.png)  
@@ -47,5 +35,6 @@ From *Draou 2013*, we substitute wheel speeds $\omega_{L,R}$ for torque requests
 
 #### 3. Traction Control 
 
-This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
+This module's job is to detect when we are slipping and reallocate torques to maximize traction with the ground to stabilize the car. 
+You can think of it as a PID loop that is trying to set the slip ratio of the rear wheels with a value near zero. 
 
